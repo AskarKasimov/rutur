@@ -1,0 +1,10 @@
+services:
+  ruturfront:
+    build:
+      context: ./rutur_frontend
+      args:
+        GENERATE_SOURCEMAP: 0
+    container_name: ruturfront
+    restart: on-failure
+    ports:
+      - '3000:3000'
