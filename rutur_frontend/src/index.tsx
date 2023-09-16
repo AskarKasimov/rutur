@@ -5,10 +5,19 @@ import { Provider } from 'react-redux';
 import { store } from "./store";
 import App from './App';
 
+import "./index.scss";
+import MainPage from './MainPage/MainPage';
+
 const router = createBrowserRouter([
     {
         path: "",
-        element: <App />
+        element: <App />,
+        children: [
+            {
+                index: true,
+                element: <MainPage />
+            }
+        ]
     }
 ])
 
