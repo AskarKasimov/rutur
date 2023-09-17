@@ -1,0 +1,16 @@
+.Article {
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 120px;
+
+    & h1 {
+        font-size: 64px;
+    }
+
+    & p {
+        font-size: 24px;
+    }
+}

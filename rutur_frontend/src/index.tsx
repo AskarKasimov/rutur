@@ -7,15 +7,22 @@ import App from './App';
 
 import "./index.scss";
 import MainPage from './MainPage/MainPage';
+import Error from './404';
+import Article from './Article/Article';
 
 const router = createBrowserRouter([
     {
         path: "",
         element: <App />,
+        errorElement: <Error />,
         children: [
             {
                 index: true,
                 element: <MainPage />
+            },
+            {
+                path: "/news/:articleId",
+                element: <Article />
             }
         ]
     }
