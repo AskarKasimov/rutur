@@ -3,6 +3,7 @@ import style from "./Place.module.scss";
 import { Carousel } from "react-responsive-carousel";
 import { useEffect } from "react";
 import { useGetCityByIdQuery, useGetPlaceByIdQuery, useGetRegionByIdQuery } from "../store/API/rutur.api";
+import { Map, Placemark } from '@pbe/react-yandex-maps';
 
 const Place = () => {
     const { placeId } = useParams();
@@ -57,6 +58,14 @@ const Place = () => {
                         <h2>Описание</h2>
                         <p>{data.content}</p>
                         <h2>Как добраться?</h2>
+                        {
+                            isSuccess
+                                ?
+                                <Map style={{ width: "100%", aspectRatio: "16 / 9" }} defaultState={{ center: [data.latitude, data.longitude], zoom: 14 }}>
+                                    <Placemark geometry={[data.latitude, data.longitude]} properties={{ iconCaption: data.title }} options={{ iconColor: "#ff0000" }} />
+                                </Map>
+                                : null
+                        }
                     </>
                     : null
             }

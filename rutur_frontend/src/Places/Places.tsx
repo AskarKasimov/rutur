@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "./Places.module.scss";
 import { useGetAllRegionsQuery, useGetCitiesByRegionIdQuery, useGetPlacesQuery } from "../store/API/rutur.api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Places = () => {
     const [regionId, setRegionId] = useState<number>(0);
@@ -10,6 +10,11 @@ const Places = () => {
     const { data, isSuccess, isLoading } = useGetPlacesQuery({ count: 100, region_id: regionId!, city_id: cityId! });
     const { data: regions, isSuccess: regionsIsSuccess, isLoading: regionsIsLoading } = useGetAllRegionsQuery(null);
     const { data: cities, isSuccess: citiesIsSuccess, isLoading: citiesIsLoading } = useGetCitiesByRegionIdQuery(regionId!, { skip: !regionId });
+
+    useEffect(() => {
+        if (regionId === 0) setCityId(0);
+    }, [regionId])
+
     return (
         <div className={style.Places}>
             <h1>Куда съездить?</h1>
@@ -41,7 +46,7 @@ const Places = () => {
                         ? data.map(element =>
                             <Link key={element.place_id} to={"/places/" + element.place_id} className={style.card}>
                                 <div className={style.image}>
-                                    <img src="https://avatars.mds.yandex.net/i?id=fcfa24355a3970e0c491eb419d469c720c017221-8497636-images-thumbs&n=13" alt="" />
+                                    <img src={"http://localhost:2180/v1/image/" + element.image_id} alt="" />
                                 </div>
                                 <p className={style.title}>{element.title}</p>
                                 <p className={style.desc}>{element.content}</p>

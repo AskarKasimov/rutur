@@ -14,7 +14,7 @@ const News = () => {
                         ? data.map(element =>
                             <Link key={element.news_id} to={"/news/" + element.news_id} className={style.card}>
                                 <div className={style.image}>
-                                    <img src="https://avatars.mds.yandex.net/i?id=fcfa24355a3970e0c491eb419d469c720c017221-8497636-images-thumbs&n=13" alt="" />
+                                    <img src={"http://localhost:2180/v1/image/" + element.image_id} alt="" />
                                 </div>
                                 <p className={style.title}>{element.title}</p>
                                 <p className={style.desc}>{element.content.slice(0, 100) + "..."}</p>
