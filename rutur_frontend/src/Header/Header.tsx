@@ -26,9 +26,9 @@ const Header = () => {
             <div className={style.container}>
                 <Link onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} style={scrollTop && hover ? { backgroundColor: "#fff", color: "#000" } : { backgroundColor: "inherit", color: "inherit" }} className={style.Logo} to="/">рутур</Link>
                 <div className={style.Menu}>
-                    <Link style={scrollTop ? { backgroundColor: "inherit" } : { backgroundColor: "#fff" }} to="/search"><SearchSVG style={scrollTop ? { fill: "#fff" } : { fill: "#000" }} /></Link>
-                    <Link style={scrollTop ? { backgroundColor: "inherit" } : { backgroundColor: "#fff" }} to="/places"><RoadSVG style={scrollTop ? { fill: "#fff" } : { fill: "#000" }} /></Link>
-                    <Link style={scrollTop ? { backgroundColor: "inherit" } : { backgroundColor: "#fff" }} to="/auth"><ProfileSVG style={scrollTop ? { fill: "#fff" } : { fill: "#000" }} /></Link>
+                    <Link style={scrollTop ? { backgroundColor: "#fff" } : { backgroundColor: "inherit" }} to="/search"><SearchSVG style={scrollTop ? { fill: "#000" } : { fill: "#fff" }} /></Link>
+                    <Link style={scrollTop ? { backgroundColor: "#fff" } : { backgroundColor: "inherit" }} to="/places"><RoadSVG style={scrollTop ? { fill: "#000" } : { fill: "#fff" }} /></Link>
+                    <Link style={scrollTop ? { backgroundColor: "#fff" } : { backgroundColor: "inherit" }} to="/profile"><ProfileSVG style={scrollTop ? { fill: "#000" } : { fill: "#fff" }} /></Link>
                 </div>
             </div>
         </div>
