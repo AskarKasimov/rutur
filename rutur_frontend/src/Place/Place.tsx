@@ -2,9 +2,13 @@ import { useParams } from "react-router-dom";
 import style from "./Place.module.scss";
 import { Carousel } from "react-responsive-carousel";
 import { useEffect } from "react";
+import { useGetCityByIdQuery, useGetPlaceByIdQuery, useGetRegionByIdQuery } from "../store/API/rutur.api";
 
 const Place = () => {
     const { placeId } = useParams();
+    const { data, isSuccess, isLoading } = useGetPlaceByIdQuery(placeId!);
+    const { data: city, isSuccess: citySuccess, isLoading: cityLoading } = useGetCityByIdQuery(data?.city_id!, { skip: !data });
+    const { data: region, isSuccess: regionSuccess, isLoading: regionLoading } = useGetRegionByIdQuery(city?.region_id!, { skip: !city });
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -12,26 +16,51 @@ const Place = () => {
 
     return (
         <div className={style.Place}>
-            <h1>Монумент дружбы народов</h1>
-            <div></div>
-            <iframe src="https://www.youtube.com/embed/1z3yfVNASWI?si=ILRcT1P-7wTrQuY3" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-            <Carousel>
-                <div>
-                    <img src="https://webformyself.com/wp-content/uploads/2020/141/1.png" alt="" />
-                </div>
-                <div>
-                    <img src="https://luxe-host.ru/wp-content/uploads/b/7/2/b7246464fd7b72aa12e85b7641170c6d.png" alt="" />
-                </div>
-                <div>
-                    <img src="https://ishadeed.com/assets/rhd/rhd-3.png" alt="" />
-                </div>
-            </Carousel>
-            <h2>Описание</h2>
-            <p>Высота монумента — 46 метров. Между двумя пилонами, символизирующими Удмуртию и Россию, располагается множество позолоченных металлических рельефов, изображающих жизнь рабоче-крестьянского народа[7].
-                Пилоны изготовлены из железобетона на ижевском предприятии «Промстройтрест». Сверху пилоны облицованы нержавеющей сталью. Горельефы, выполненные из кованой меди и покрытые позолотой, изготовлены на Экспериментальном скульптурно-производственном комбинате Московского отделения Художественного фонда РСФСР[5].
-                С лицевой стороны, обращённой к пруду, между пилонами размещены скульптурные композиции «Мир», «Труд» и «Равенство». С противоположной стороны между пилонами установлены рельефы с геральдическими символами Удмуртии и России. Нижний рельеф монумента изображает кузнеца, работающего у наковальни. Вторая композиция, изображающая воинов с оружием в руках, символизирует защиту русскими и удмуртами социалистического отечества в годы Гражданской и Великой Отечественной войн. Завершают полосу рельефов аллегорические женские фигуры Удмуртии и России, держащие над собой стяг. Для лучшего восприятия контуры рельефов выделены позолотой[8].
-                Автор композиции «Труд», изображающей кузнеца, — С. К. Кузьмин. Общая идея монумента, авторство остальных горельефов, включая элементы с надписями «СССР» и «Удмуртская АССР», принадлежит А. Н. Бурганову[5]. Архитектор Р. К. Топуридзе разработал планировочную композицию, художники П. С. Семёнов и В. А. Табах участвовали в первоначальном проектировании[1][2].</p>
-            <h2>Как добраться?</h2>
+            {
+                isSuccess
+                    ?
+                    <>
+                        <h1>{data.title}</h1>
+                        <div className={style.tags}>
+                            {regionSuccess
+                                ?
+                                <span>{region.region_name}</span>
+                                : null
+                            }
+                            {citySuccess
+                                ?
+                                <span>{city.city_name}</span>
+                                : null
+                            }
+                        </div>
+                        <iframe src={"https://www.youtube.com/embed/" + data.youtube_id} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+                        {
+                            data.images_id.length > 1
+                                ?
+                                <Carousel>
+                                    {
+                                        data.images_id.map(element =>
+                                            <div>
+                                                <img key={element} src={"http://localhost:2180/v1/image/" + element} alt="" />
+                                            </div>
+                                        )
+                                    }
+                                </Carousel>
+                                : null
+                        }
+                        {
+                            data.images_id.length === 1
+                                ? <img src={"http://localhost:2180/v1/image/" + data.images_id[0]} alt="" />
+                                : null
+                        }
+                        <h2>Описание</h2>
+                        <p>{data.content}</p>
+                        <h2>Как добраться?</h2>
+                    </>
+                    : null
+            }
+
         </div>
     );
 }

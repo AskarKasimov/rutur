@@ -7,7 +7,7 @@ import App from './App';
 
 import "./index.scss";
 import MainPage from './MainPage/MainPage';
-import Error from './404';
+import Error from './error';
 import Article from './Article/Article';
 import Places from './Places/Places';
 import Place from './Place/Place';

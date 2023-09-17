@@ -10,7 +10,7 @@
         font-size: 64px;
         font-weight: 400;
     }
-    
+
     & h2 {
         font-size: 48px;
         font-weight: 400;
@@ -24,4 +24,21 @@
 iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    & span {
+        background-color: #fff;
+        color: #000;
+        font-size: 20px;
+        border-radius: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 8px;
+    }
 }
