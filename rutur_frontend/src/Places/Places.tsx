@@ -49,7 +49,7 @@ const Places = () => {
                                     <img src={"http://localhost:2180/v1/image/" + element.image_id} alt="" />
                                 </div>
                                 <p className={style.title}>{element.title}</p>
-                                <p className={style.desc}>{element.content}</p>
+                                <p className={style.desc}>{element.content.slice(0, 200) + "..."}</p>
                             </Link>
                         )
                         : null
