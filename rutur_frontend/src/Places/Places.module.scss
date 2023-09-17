@@ -1,68 +1,14 @@
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.MainPage {
+.Places {
+    width: 100%;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-}
-
-.VideoLayout {
-    height: 100svh;
-    overflow: visible;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video {
-    object-fit: cover;
-    height: 100svh;
-    width: 100svw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.Rutur {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    gap: 30px;
+    margin-top: 120px;
 
     & h1 {
         font-size: 64px;
-        max-width: 700px;
-        font-weight: bold;
-    }
-
-    & a {
-        font-size: 32px;
-        text-decoration: underline;
-        font-weight: bold;
-    }
-}
-
-.arrow {
-    position: absolute;
-    top: 80svh;
-}
-
-.News {
-    min-height: calc(100svh - 130px);
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-
-    & h2 {
         text-align: center;
-        font-size: 64px;
         font-weight: 400;
     }
 }

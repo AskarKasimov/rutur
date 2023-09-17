@@ -9,6 +9,8 @@ import "./index.scss";
 import MainPage from './MainPage/MainPage';
 import Error from './404';
 import Article from './Article/Article';
+import Places from './Places/Places';
+import Place from './Place/Place';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
             {
                 path: "/news/:articleId",
                 element: <Article />
+            },
+            {
+                path: "/places",
+                element: <Places />
+            },
+            {
+                path: "/places/:placeId",
+                element: <Place />
             }
         ]
     }

@@ -1,17 +1,27 @@
-.Article {
-    width: 100%;
+.Place {
     min-height: 100svh;
+    width: 100%;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    margin-top: 120px;
 
     & h1 {
         font-size: 64px;
+        font-weight: 400;
+    }
+    
+    & h2 {
+        font-size: 48px;
         font-weight: 400;
     }
 
     & p {
         font-size: 24px;
     }
+}
+
+iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }
