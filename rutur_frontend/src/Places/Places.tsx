@@ -46,7 +46,7 @@ const Places = () => {
                         ? data.map(element =>
                             <Link key={element.place_id} to={"/places/" + element.place_id} className={style.card}>
                                 <div className={style.image}>
-                                    <img src={"http://localhost:2180/v1/image/" + element.image_id} alt="" />
+                                    <img src={"http://api.rutur.run.place/v1/image/" + element.image_id} alt="" />
                                 </div>
                                 <p className={style.title}>{element.title}</p>
                                 <p className={style.desc}>{element.content.slice(0, 200) + "..."}</p>

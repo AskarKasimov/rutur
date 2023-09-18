@@ -4,7 +4,7 @@ import { IArticle, ICities, ICity, IGetNews, IGetPlaces, INews, IPlace, IPlaces,
 export const ruturAPI = createApi({
     reducerPath: "API",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:2180/v1",
+        baseUrl: "http://api.rutur.run.place/v1",
         prepareHeaders: (headers) => {
             let token = "";
             try {

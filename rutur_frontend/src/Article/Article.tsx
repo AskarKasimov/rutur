@@ -15,7 +15,7 @@ const Article = () => {
             {isSuccess
                 ? <><h1>{data.title}</h1>
                     <p>{[new Date(data.timestamp * 1000).getDate(), new Date(data.timestamp * 1000).getMonth(), new Date(data.timestamp * 1000).getFullYear()].join("/")}, {[new Date(data.timestamp * 1000).getHours(), new Date(data.timestamp * 1000).toTimeString().slice(3, 5)].join(":")}</p>
-                    <img src={"http://localhost:2180/v1/image/" + data.image_id} alt="" />
+                    <img src={"http://api.rutur.run.place/image/" + data.image_id} alt="" />
                     <p>{data.content}</p>
                 </>
                 : null

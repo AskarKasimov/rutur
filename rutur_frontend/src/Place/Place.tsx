@@ -43,7 +43,7 @@ const Place = () => {
                                     {
                                         data.images_id.map(element =>
                                             <div>
-                                                <img key={element} src={"http://localhost:2180/v1/image/" + element} alt="" />
+                                                <img key={element} src={"http://api.rutur.run.place/v1/image/" + element} alt="" />
                                             </div>
                                         )
                                     }
@@ -52,7 +52,7 @@ const Place = () => {
                         }
                         {
                             data.images_id.length === 1
-                                ? <img src={"http://localhost:2180/v1/image/" + data.images_id[0]} alt="" />
+                                ? <img src={"http://api.rutur.run.place/v1/image/" + data.images_id[0]} alt="" />
                                 : null
                         }
                         <h2>Описание</h2>
