@@ -12,7 +12,7 @@ const Places = () => {
     const { data: cities, isSuccess: citiesIsSuccess, isLoading: citiesIsLoading } = useGetCitiesByRegionIdQuery(regionId!, { skip: !regionId });
 
     useEffect(() => {
-        if (regionId === 0) setCityId(0);
+        setCityId(0);
     }, [regionId])
 
     return (
